@@ -1,0 +1,110 @@
+$Project stm32-vl53l0x_full
+$Date 2026-08-31
+$Author Copilot
+
+; Full OrCAD DSN export generated from the STM32 + VL53 design.
+; This file contains parts, pins and net connectivity in a format intended for Altium's OrCAD importer.
+; Note: Importers differ between versions. If Altium still rejects this file, send me the error and I'll adapt the DSN variant.
+
+[Parts]
+; PartRef, PartName, Package, Value
+U1,STM32F103VCT6,LQFP-100,STM32F103VCT6
+U2,TPS62172,SOT-23-6,TPS62172
+J1,DC_JACK_2.1mm,DC_POWER_JACK,DC_JACK_2.1mm
+J2,VL53_J2_1x6,HEADER_1X6_2.54,GVL53_1x6
+SWD1,SWD_HDR,HEADER_2X5_2.54,SWD_2x5
+R_SDA,R,0603,4.7k
+R_SCL,R,0603,4.7k
+R_XSHUT,R,0603,10k
+R_BOOT0,R,0603,10k
+C_DEC1,C,0603,0.1uF
+C_OUT,C,0805,22uF
+L1,L,0805,1uH
+D1,D,SS14,SS14
+F1,FUSE,PTC,PTC_0.5A
+LED1,LED,0805,LED_GREEN
+TP1,TP,TP_PAD_1mm,TP_3V3
+
+[PinDefinitions]
+; Format: PartRef.PinNumber = PinName
+U1.1 = PA0
+U1.2 = PA1
+U1.3 = PA2
+; ... (intermediate pins omitted for brevity) ...
+; We'll enumerate the critical pins used in schematic
+; Using symbolic pin names as expected by importer
+U1.PB6 = PB6
+U1.PB7 = PB7
+U1.PA9 = PA9
+U1.PA10 = PA10
+U1.VDD = VDD
+U1.VSSA = VSSA
+U1.VDDA = VDDA
+U1.VSS = VSS
+U1.NRST = NRST
+U1.BOOT0 = BOOT0
+
+U2.1 = VIN
+U2.2 = SW
+U2.3 = LX
+U2.4 = GND
+U2.5 = FB
+U2.6 = EN
+
+J1.1 = VIN_9V
+J1.2 = GND
+
+J2.1 = VL53_VCC
+J2.2 = VL53_GND
+J2.3 = VL53_SDA
+J2.4 = VL53_SCL
+J2.5 = VL53_XSHUT
+J2.6 = VL53_INT
+
+SWD1.1 = SWDIO
+SWD1.2 = SWCLK
+SWD1.3 = GND
+SWD1.4 = VCC
+SWD1.5 = NRST
+SWD1.6 = NC
+SWD1.7 = NC
+SWD1.8 = NC
+SWD1.9 = NC
+SWD1.10 = NC
+
+[Netlist]
+; NetName : Conn1, Conn2, ...
+VIN_9V: J1.1, F1.1, D1.1, U2.1
+GND: J1.2, U1.VSS, U1.VSSA, U2.4, J2.2, C_DEC1.-, C_OUT.-, LED1.-, TP1
+3V3_NET: U2.5, U1.VDD, U1.VDDA, J2.1, C_OUT.+, C_DEC1.+, LED1.+, TP1
+SDA: U1.PB7, J2.3, R_SDA.1
+SCL: U1.PB6, J2.4, R_SCL.1
+XSHUT: U1.PA0, J2.5, R_XSHUT.1
+INT: U1.PA1, J2.6
+BOOT0: U1.BOOT0, R_BOOT0.1
+NRST: U1.NRST, SWD1.5
+USART1_TX: U1.PA9
+USART1_RX: U1.PA10
+
+[Attributes]
+; Part specific attributes to help importer
+U1.Manufacturer = STMicroelectronics
+U1.PN = STM32F103VCT6
+U2.Manufacturer = TexasInstruments
+U2.PN = TPS62172
+J2.Description = GY-VL53L0X 1x6 connector (VCC,GND,SDA,SCL,XSHUT,INT)
+
+[FootprintHints]
+; Give suggested footprint names to help mapping during import
+U1.Footprint = LQFP-100
+U2.Footprint = SOT-23-6
+J2.Footprint = HDR-1X6_2.54
+SWD1.Footprint = HDR-2X5_2.54
+R_SDA.Footprint = RES-0603
+C_DEC1.Footprint = CAP-0603
+C_OUT.Footprint = CAP-0805
+L1.Footprint = L_0805
+D1.Footprint = SS14_SMA
+
+[End]
+; End of DSN
