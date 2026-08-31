@@ -1,0 +1,5 @@
+kicad_version: 7
+project_name: stm32-vl53l0x
+sheets:
+  - stm32-vl53l0x.kicad_sch
+pcb: stm32-vl53l0x.kicad_pcb

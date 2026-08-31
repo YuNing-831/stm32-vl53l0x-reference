@@ -1,0 +1,1 @@
+Files added: KiCad project placeholders (schematic, pcb, project). Note: these are initial KiCad-format placeholder files created to let you import the project into Altium Designer 26; I can follow up by producing a fully-detailed KiCad project with complete symbol libraries and footprints on request.

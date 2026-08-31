@@ -1,0 +1,14 @@
+This PNG is a high-level schematic preview exported from the design notes. It's a simplified diagram for quick review; the full KiCad source files are included in this repository for import into Altium.
+
+[Preview image placeholder]
+
+Key nets:
+- VIN_9V (input)
+- 3V3_NET (regulated output)
+- GND
+- SDA (I2C)
+- SCL (I2C)
+- XSHUT (control)
+- INT (interrupt)
+
+See stm32-vl53l0x.kicad_sch for detailed connections.
