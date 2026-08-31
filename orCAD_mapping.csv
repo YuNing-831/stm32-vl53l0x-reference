@@ -1,0 +1,16 @@
+KiCad_Symbol,KiCad_Footprint,OrCAD_Footprint_Suggestion,Notes
+STM32F103VCT6,LQFP100:STM32F103VCT6,LQFP100_14x14mm_P0.5mm,Verify pad pitch 0.5mm and pin numbering
+TPS62172,SOT-23-6:TPS62172,SOT-23-6,Match SOT-23-6 variant per vendor
+L1,Inductor_SMD,L_SMD_0805,Select footprint per inductor package
+C_0603,C_0603,CAP_0603,0.1uF decoupling
+C_0805,C_0805,CAP_0805,22uF output cap
+R_0603,R_0603,RES_0603,Generic 0603 resistor
+DC_JACK_2.1mm,,DC_Power_Jack_2_1mm,Verify mechanical holes
+VL53_J2_1x6,PinHeader:PinHeader_1x6_P2.54mm,HDR_1X6_2.54mm,Verify Pin1 orientation
+SWD_HDR,Header:2x5_2.54mm,HDR_2X5_2.54mm,Ensure NRST and VCC pins present
+TP_PAD_1mm,TP_PAD_1mm,TP_PAD_1MM,Choose testpoint style
+LED_0805,LED_0805,LED_0805,Verify polarity
+X1,Crystal_HC49,CRYSTAL_HC49,Or choose SMD resonator footprint if used
+
+# Notes
+# Use this CSV in Altium during OrCAD import to map OrCAD footprints to your Altium libraries. Check MCU and regulator footprints carefully.
