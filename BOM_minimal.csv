@@ -1,0 +1,18 @@
+Ref,Qty,Value,Package/Footprint,Comment,Example Part
+U1,1,STM32F103VCT6,LQFP100,MCU (100-pin),ST STM32F103VCT6
+U2,1,TPS62172,SOIC-8? (per datasheet),2A synchronous buck regulator,TI TPS62172
+J1,1,DC_JACK_2.1mm,,Power input jack
+F1,1,PTC_0.5A,,Input resettable fuse,Littlefuse MF-PSM series
+D1,1,SS14,SMA,Schottky diode,Diodes Inc SS14
+CIN1,1,47uF/25V,0805,Input electrolytic/solid capacitor
+CIN2,2,0.1uF,0603,Ceramic bypass,X7R
+COUT1,1,22uF/6.3V,0805,Output cap X5R/X7R
+LED1+R1,1,LED+1k,0805+0603,Power indicator
+R_SDA,1,4.7k,0603,I2C pullup,Yageo 0603
+R_SCL,1,4.7k,0603,I2C pullup,Same
+R_XSHUT,1,10k,0603,Pullup for XSHUT,Same
+R_BOOT0,1,10k,0603,BOOT0 pulldown,Same
+BTN_RST,1,TACT,Through-hole,Reset button
+J2,1,1x6_2.54mm,Header,VL53 module connector
+SWD_HDR,1,2x5_2.54mm,Header,SWD debug header
+X1,1,8MHz,HC49,Crystal for HSE (if used)

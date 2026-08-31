@@ -1,0 +1,43 @@
+# Schematic sketch (text)
+
+Design assumptions:
+- 9V input -> production-grade SMD buck (TPS62172) -> 3.3V rail
+- MCU: STM32F103VCT6 (LQFP100)
+- Sensor: GY-VL53L0X module
+- Single sensor, no expansion headers reserved
+
+Nets and connections (concise):
+
+VIN_9V: J1 (DC jack) -> F1 (PTC 0.5A) -> D1 (SS14) -> BUCK_IN
+BUCK_OUT: TPS62172_OUT -> 3V3_NET
+
+3V3_NET -> MCU VDD pins, MCU VDDA if present, VL53_VCC
+GND -> common ground plane
+
+STM32F103VCT6 (selected pins, example mapping):
+- VDD/VDDA -> 3V3_NET, decoupling 0.1uF close to each VDD
+- NRST -> 10k pullup to 3V3_NET, reset button to GND
+- BOOT0 -> 10k pulldown to GND
+- SWD header -> SWCLK, SWDIO, GND, 3V3, NRST
+- I2C1: PB6 = SCL, PB7 = SDA
+- PA0 -> VL53_XSHUT (10k pullup to 3.3V)
+- PA1 -> VL53_INT (optional 10k pullup)
+- PA9/PA10 -> USART1 TX/RX (optional debug header)
+
+VL53 module (J2; 1x6 2.54mm):
+1: VCC -> 3V3_NET
+2: GND -> GND
+3: SDA -> PB7 (via R_SDA 4.7k to 3V3)
+4: SCL -> PB6 (via R_SCL 4.7k to 3V3)
+5: XSHUT -> PA0 (10k pullup)
+6: INT -> PA1 (10k pullup optional)
+
+Decoupling:
+- 0.1uF ceramic close to every VDD pin
+- Main rail cap 22uF (X5R/X7R) + 0.1uF ceramic close to load
+
+Power regulator: TPS62172 (2A) recommended configuration following datasheet reference design. Place inductor and input/output caps per layout guidelines for lowest EMI.
+
+Testpoints: TP_3V3, TP_GND, TP_SDA, TP_SCL, TP_XSHUT
+
+Notes: If the GY-VL53L0X module already contains I2C pullups, omit the external R_SDA / R_SCL to avoid parallel pulls.
